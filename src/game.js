@@ -2,7 +2,7 @@ import Paddle from '/src/paddle.js';
 import InputHandler from '/src/input.js';
 import Ball from '/src/ball.js';
 import Brick from '/src/brick.js';
-import {buildLevel, level1, level2} from '/src/levels.js'
+import {buildLevel, level1, level2, level3, level4, level5} from '/src/levels.js'
 
 const GAMESTATE = 
 {
@@ -28,7 +28,7 @@ export default class Game
 
      this.bricks = [];
 
-     this.levels = [level1, level2];
+     this.levels = [level1, level2, level3, level4, level5];
      this.currentLevel = 0;
 
      new InputHandler(this.paddle, this);
@@ -69,7 +69,7 @@ export default class Game
   draw(ctx)
   {
     [...this.gameObjects, ...this.bricks].forEach((object) => object.draw(ctx));
-    
+
     if(this.gamestate === GAMESTATE.MENU)
     {
       ctx.rect(0,0,this.gameWidth, this.gameHeight);  
@@ -101,7 +101,6 @@ export default class Game
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("GAME OVER", this.gameWidth / 2, this.gameHeight / 2 - 50)
-      ctx.fillText("PRESS 'SPACEBAR' TO RETRY", this.gameWidth / 2, this.gameHeight / 2 + 50)
     }
   }
 
